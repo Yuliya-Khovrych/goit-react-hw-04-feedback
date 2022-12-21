@@ -9,6 +9,8 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const optionKey = Object.keys({ good, neutral, bad });
+
   const onLeaveFeedback = option => {
     switch (option) {
       case 'good':
@@ -33,7 +35,6 @@ export const App = () => {
   };
   const total = countTotalFeedback();
 
-
   const countPositiveFeedbackPercentage = () => {
     const positiveFeedbackPercentage = countTotalFeedback();
     const percentage = (good * 100) / positiveFeedbackPercentage;
@@ -45,7 +46,7 @@ export const App = () => {
     <>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={['good', 'neutral', 'bad']}
+          options={optionKey}
           onLeaveFeedback={onLeaveFeedback}
         />
       </Section>
@@ -64,8 +65,7 @@ export const App = () => {
       )}
     </>
   );
-}
-
+};
 
 // import { Component } from 'react';
 // import { Section } from './Section/Section';
